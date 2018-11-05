@@ -1,0 +1,66 @@
+.App {
+  text-align: center;
+
+}
+
+.title {
+  color: black;
+  font-family: "Lobster", Sans-serif;
+
+}
+
+.text-color{
+  color: burlywood
+}
+
+.cardBorder {
+  border-style: solid;
+  border-color: black
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.back {
+  background-image: url("/images/clothing/whitewall.jpeg") ;
+  height:85.5em;
+  width: 100%;
+  position: relative;
+  margin-left: auto;
+  margin-right:auto;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+ }
+
+.App-link {
+  color: #61dafb;
+}
+
+.margin{
+  margin-bottom: 1.5em
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
