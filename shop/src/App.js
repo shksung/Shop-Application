@@ -46,7 +46,10 @@ class App extends Component {
     this.setState({
       cart: this.state.cart.filter(cartItem => cartItem.name != item),
       counter: this.state.counter - 1
-    })
+    }, () => {
+      axios.post('http://localhost:8080/shop', this.state.cart)
+    }
+    )
   }
 
   name = (name) => {
@@ -54,12 +57,12 @@ class App extends Component {
       name: name
     })
 
-    if (this.state.users.indexOf(name)=== -1) {
+    if (this.state.users.indexOf(name) === -1) {
       this.setState({
         users: this.state.users.concat(name)
       })
     }
-    else{
+    else {
       this.setState({
         message: "Welcome Back"
       })
@@ -73,7 +76,7 @@ class App extends Component {
           cart: res.data
         })
       })
-      
+
     if (localStorage.names) {
 
       let names = JSON.parse(localStorage.getItem('names'))
@@ -118,8 +121,8 @@ class App extends Component {
 
 
         <Switch>
-          <Route path="/" exact render={(routerProps) => <Welcome  users={this.state.users} name={this.name} {...routerProps} />} ></Route>
-          <Route path="/home" render={(routerProps) => <Home message= {this.state.message} users={this.state.users} name={this.state.name} {...routerProps} />} ></Route>
+          <Route path="/" exact render={(routerProps) => <Welcome users={this.state.users} name={this.name} {...routerProps} />} ></Route>
+          <Route path="/home" render={(routerProps) => <Home message={this.state.message} users={this.state.users} name={this.state.name} {...routerProps} />} ></Route>
           <Route path="/shop" render={(routerProps) => <Shop addCart={this.addCart} {...routerProps} />} ></Route>
           <Route path="/cart" render={(routerProps) => <Cart cart={this.state.cart} deleteFromCart={this.deleteFromCart} {...routerProps} />} ></Route>
         </Switch>
@@ -168,7 +171,7 @@ class Home extends Component {
       msg = this.props.message + " " + this.props.name + "!" + " We have signed you up in our system"
     }
     else {
-      msg= this.props.message + " " + this.props.name + "!"
+      msg = this.props.message + " " + this.props.name + "!"
     }
     return (
       <div className="back">
